@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Functional Test ">
+
+  <!--We  can show path to some xml.   -->
+  <!--<suite-file path="./Some files.xml"/>-->
+
+  <suite-files>
+    <suite-file path="SuiteBasicFunctionality.xml"/>
+    <suite-file path="SuitePaymentFunctionality.xml"/>
+  </suite-files>
+  <test verbose="2" name="Basis test">
+
+
+
+  </test> <!-- UdemySelenium -->
+</suite> <!-- Default Suite -->

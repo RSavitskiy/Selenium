@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Default Suite">
+    <test verbose="2" name="UdemySelenium">
+        <groups>
+            <run>
+                <include name="smoke"/>
+                <!--<include name="recreation"/>-->
+
+                <!--if test will be include this groups they does  not call-->
+                <!--<exclude name="recreation"/>-->
+
+            </run>
+        </groups>
+
+
+        <classes>
+            <class name="TestNG.GroupingTest.GroupingTest"/>
+        </classes>
+    </test> <!-- UdemySelenium -->
+</suite> <!-- Default Suite -->

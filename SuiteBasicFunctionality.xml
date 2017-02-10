@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Functional testSuite">
+
+  <!--verbose [0-10]  details test logs -->
+  <test verbose="0" name="Basis test">
+    <classes>
+      <class name="TestNG.Xml.LoginTest"/>
+      <!--we can add some class in xml file and they well be call -->
+      <class name="TestNG.Xml.SignUpTest"/>
+    </classes>
+  </test> <!-- UdemySelenium -->
+</suite> <!-- Default Suite -->

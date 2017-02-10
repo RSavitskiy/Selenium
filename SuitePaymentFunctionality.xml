@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Functional testSuite">
+
+  <test verbose="0" name="Payment test">
+    <classes>
+      <class name="TestNG.Xml.PaymentReturn"/>
+      <class name="TestNG.Xml.PaymentTest"/>
+    </classes>
+  </test> <!-- UdemySelenium -->
+</suite> <!-- Default Suite -->

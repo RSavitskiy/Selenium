@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Default Suite">
+
+  <parameter name="email" value="r.savitsky08@gmail.com"/>
+  <parameter name="pass" value="1234567"/>
+
+  <test name="UdemySelenium">
+    <classes>
+      <class name="TestNG.Parameters.LearnParameters"/>
+    </classes>
+  </test> <!-- UdemySelenium -->
+</suite> <!-- Default Suite -->
