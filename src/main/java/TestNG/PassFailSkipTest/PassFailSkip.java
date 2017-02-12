@@ -31,7 +31,10 @@ public class PassFailSkip {
     public void LoginViaFacebook() {
         System.out.println("Login  via Facebook");
 //        skip test
+
         throw new SkipException("facebook functionality is not supported");
+
+
     }
 
     @Test

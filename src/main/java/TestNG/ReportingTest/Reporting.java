@@ -128,7 +128,7 @@ public class Reporting {
         driver.findElement(By.partialLinkText("Русский")).click();
 
         try {
-            assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*на русском языке[\\s\\S]*$"));
+            assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*на русском язы[\\s\\S]*$"));
         } catch (Error e) {
             verificationErrors.append(e.toString());
         }
