@@ -6,10 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.SkipException;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import javax.print.attribute.standard.MediaSize;
 import java.util.List;
@@ -164,16 +161,41 @@ public class WikiTest {
         driver.findElement(By.xpath(".//*[@id='wpPassword1']")).sendKeys("PAss123456");
         driver.findElement(By.xpath(".//*[@id='wpLoginAttempt']")).click();
         assertEquals("Roman Savitsky",driver.findElement(By.xpath(".//*[text()='Roman Savitsky']")).getText());
+        driver.findElement(By.xpath(".//*[@id='pt-logout']/a")).click();
     }
 
-    @Test
-    public void negativeLogIn(){
+    @Test(dataProvider = "wikiRegister")
+    public void negativeLogIn(Object obj){
+        driver.get(baseUrl);
+        driver.findElement(By.xpath(".//*[@id='js-link-box-ru']")).click();
+        driver.findElement(By.xpath(".//*[@id='pt-login']/a")).click();
+        driver.findElement(By.xpath(".//*[@id='wpName1']")).sendKeys(obj[0][0]);
+        driver.findElement(By.xpath(".//*[@id='wpPassword1']")).sendKeys("PAss123456");
+        driver.findElement(By.xpath(".//*[@id='wpLoginAttempt']")).click();
+        assertEquals("Roman Savitsky",driver.findElement(By.xpath(".//*[text()='Roman Savitsky']")).getText());
+        driver.findElement(By.xpath(".//*[@id='pt-logout']/a")).click();
 
+
+
+
+
+    }
+
+    @DataProvider(name="wikiRegister")
+    private Object[][]testData(){
+        Object[][]obj=new Object[2][2];
+        obj[0][0]="";
+        obj[0][1]="PAss123456";
+        obj[0][2]="Roman Savitsky";
+        obj[1][0]="";
+        obj[1][1]="";
+        obj[1][2]="";
+return obj;
     }
 
 //    PAss123456
 
-//.//div[contains(@class,'MediaWiki')]
+
 
 
     @AfterSuite
