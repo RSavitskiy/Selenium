@@ -65,7 +65,7 @@ public class WikiTest {
 
         driver.findElement(By.xpath(".//*[@id='js-link-box-ja']")).click();
         try {
-            assertEquals(driver.getTitle(), "Wikipe");
+            assertEquals(driver.getTitle(), "Wikipedia");
         } catch (Throwable t) {
             System.out.println("Japanese language don't work");
         }
@@ -103,7 +103,7 @@ public class WikiTest {
         }
         driver.navigate().back();
 
-        driver.findElement(By.xpath(".//*[@id='js-link-box-de']']")).click();
+        driver.findElement(By.xpath(".//*[@id='js-link-box-de']")).click();
         try {
             assertEquals(driver.getTitle(), "Wikipedia – Die freie Enzyklopädie");
         } catch (Throwable t) {
@@ -119,7 +119,7 @@ public class WikiTest {
         }
         driver.navigate().back();
 
-        driver.findElement(By.xpath(".//*[@id='js-link-box-zh']']")).click();
+        driver.findElement(By.xpath(".//*[@id='js-link-box-zh']")).click();
         try {
             assertEquals(driver.getTitle(), "维基百科，自由的百科全书");
         } catch (Throwable t) {
@@ -152,6 +152,8 @@ public class WikiTest {
         assertEquals(true, driver.findElement(By.xpath(".//div[contains(@class,'Meta')]")).isDisplayed());
     }
 
+
+    //    PAss123456
     @Test
     public void logIn() {
         driver.get(baseUrl);
@@ -160,42 +162,37 @@ public class WikiTest {
         driver.findElement(By.xpath(".//*[@id='wpName1']")).sendKeys("Roman Savitsky");
         driver.findElement(By.xpath(".//*[@id='wpPassword1']")).sendKeys("PAss123456");
         driver.findElement(By.xpath(".//*[@id='wpLoginAttempt']")).click();
-        assertEquals("Roman Savitsky",driver.findElement(By.xpath(".//*[text()='Roman Savitsky']")).getText());
+        assertEquals("Roman Savitsky", driver.findElement(By.xpath(".//*[text()='Roman Savitsky']")).getText());
         driver.findElement(By.xpath(".//*[@id='pt-logout']/a")).click();
     }
 
-    @Test(dataProvider = "wikiRegister")
-    public void negativeLogIn(Object obj){
+
+    @Test(dataProvider = "WikiRegister")
+    public void negativeLogIn(String login, String password) {
         driver.get(baseUrl);
         driver.findElement(By.xpath(".//*[@id='js-link-box-ru']")).click();
         driver.findElement(By.xpath(".//*[@id='pt-login']/a")).click();
-        driver.findElement(By.xpath(".//*[@id='wpName1']")).sendKeys(obj[0][0]);
-        driver.findElement(By.xpath(".//*[@id='wpPassword1']")).sendKeys("PAss123456");
+        driver.findElement(By.xpath(".//*[@id='wpName1']")).sendKeys(login);
+        driver.findElement(By.xpath(".//*[@id='wpPassword1']")).sendKeys(password);
         driver.findElement(By.xpath(".//*[@id='wpLoginAttempt']")).click();
-        assertEquals("Roman Savitsky",driver.findElement(By.xpath(".//*[text()='Roman Savitsky']")).getText());
-        driver.findElement(By.xpath(".//*[@id='pt-logout']/a")).click();
-
-
-
-
-
+        assertEquals("ведённый вами пароль неверен. Попробуйте ещё раз.",
+                driver.findElement(By.xpath(".//*[@class='error']/p[starts-with(text(),'Введённый вами')]")).getText());
+//        driver.findElement(By.xpath(".//*[@id='pt-logout']/a")).click();
     }
 
-    @DataProvider(name="wikiRegister")
-    private Object[][]testData(){
-        Object[][]obj=new Object[2][2];
-        obj[0][0]="";
-        obj[0][1]="PAss123456";
-        obj[0][2]="Roman Savitsky";
-        obj[1][0]="";
-        obj[1][1]="";
-        obj[1][2]="";
-return obj;
+    @DataProvider(name = "WikiRegister")
+    public Object[][] testData() {
+        Object[][] obj = new Object[3][2];
+        obj[0][0] = " ";
+        obj[0][1] = "PAss123456";
+
+        obj[1][0] = "Roman Savitsky";
+        obj[1][1] = " ";
+
+        obj[2][0] = " ";
+        obj[2][1] = " ";
+        return obj;
     }
-
-//    PAss123456
-
-
 
 
     @AfterSuite
